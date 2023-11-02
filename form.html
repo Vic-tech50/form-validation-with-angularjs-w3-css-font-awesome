@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app = "">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Form validation with AbgularJs and W3.css</title>
+		<script type="text/javascript" src="angular.js"></script>
+	<link rel="stylesheet" href="w3/w32.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> -->
+
+<style type="text/css">
+	input.ng-invalid.ng-touched, textarea.ng-invalid.ng.touched{
+		border: 2px solid red;
+	}
+
+		input.ng-valid.ng-touched, textarea.ng-valid.ng.touched{
+		border: 2px solid green;
+	}
+
+	button[disabled]{
+		cursor: not-allowed;
+		color: dark-grey;
+	}
+
+
+</style>
+
+
+</head>
+<body>
+
+<div class = "w3-container w3-padding-16" style="width: 50%; margin: auto;">
+
+<form action="" name="form" class="w3-container w3-card-4 w3-light-grey w3-padding-16" novalidate style="padding: 40px;">
+<h2 class="w3-center">Contact Us</h2>
+ 
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-user"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input " name="first" type="text" placeholder="First Name" ng-model = "contact.first" ng-required = "true">
+  <!-- error message -->
+      <div ng-show = "form.first.$touched && form.first.$invalid">
+      	<p class="w3-text-red">This FirstName field is required</p>
+      </div>
+    </div>
+</div>
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-user"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input " name="last" type="text" placeholder="Last Name" ng-model = "contact.last" ng-required = "true">
+      <!-- error message -->
+       <div ng-show = "form.last.$touched && form.last.$invalid">
+      	<p class="w3-text-red">This LastName field is required</p>
+      </div>
+    </div>
+</div>
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-envelope-o"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input " name="email" type="email" placeholder="Email" ng-model = "contact.email" ng-required = "true">
+
+       <!-- error message -->
+       <div ng-show = "form.email.$touched && form.email.$invalid">
+      	<p class="w3-text-red">This field is required</p>
+      </div>
+        <div ng-show = "form.email.$dirty && form.email.$invalid">
+      	<p class="w3-text-red">The Email Format is wrong</p>
+      </div>
+     <!--   <div ng-show = "form.email.$touched && form.email.$valid">
+      	<p class="w3-text-green">The Email is correct</p>
+      </div> -->
+    </div>
+</div>
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-phone"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input " name="phone" type="number" placeholder="Phone" ng-model = "contact.phone" ng-required = "true">
+
+       <!-- error message -->
+       <div ng-show = "form.phone.$touched">
+      	<p class="w3-text-red">This Phone field is required</p>
+      </div>
+
+       <div ng-show = "form.email.$dirty && form.email.$invalid">
+      	<p class="w3-text-red">The Phone Must be a number</p>
+      </div>
+
+    </div>
+</div>
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-pencil"></i></div>
+    <div class="w3-rest">
+      <textarea class="w3-input " name="message" type="text" placeholder="Message" ng-model = "contact.message" ng-required = "true"></textarea>
+
+        <!-- error message -->
+       <div ng-show = "form.message.$touched && form.message.$invalid">
+      	<p class="w3-text-red">This Message field is required</p>
+      </div>
+    </div>
+</div>
+
+<button class="w3-button w3-block w3-section w3-red w3-round-large w3-padding" ng-disabled = "form.$invalid">Send</button>
+
+</form>
+
+
+</div>
+</body>
+</html>
